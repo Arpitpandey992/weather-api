@@ -1,7 +1,7 @@
 from flask import Flask, request
 from dotenv import load_dotenv
 
-from utils import get_temperature
+from app.utils import get_temperature
 
 
 def create_app():
@@ -16,3 +16,7 @@ def create_app():
         return {"city": city, "weather": get_temperature(city)}
 
     return app
+
+
+app = create_app()
+app.run()
