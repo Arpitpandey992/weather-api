@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_cors import CORS
 from dotenv import load_dotenv
 
 from app.utils import get_temperature
@@ -6,6 +7,7 @@ from app.utils import get_temperature
 
 def createApp(testing: bool = True):
     app = Flask(__name__)
+    CORS(app)
     load_dotenv()
     DEFAULT_CITY = 'Roorkee'
 
