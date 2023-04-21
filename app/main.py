@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from app.utils import get_temperature
 
 
-def create_app():
+def createApp(testing: bool = True):
     app = Flask(__name__)
     load_dotenv()
     DEFAULT_CITY = 'Roorkee'
@@ -13,10 +13,7 @@ def create_app():
     @app.route('/weather', methods=['GET'])
     def getWeatherAPI():
         city = request.args.get('city', DEFAULT_CITY)
+        print(f"Get request, city = {city}")
         return {"city": city, "weather": get_temperature(city)}
 
     return app
-
-
-app = create_app()
-app.run()
